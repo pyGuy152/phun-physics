@@ -1,22 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+app.use(cors());
 const port = 8000;
 
-// Middleware for parsing JSON request bodies
-app.use(express.json());
-
-// A simple GET endpoint
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
-});
-
-// A POST endpoint to handle JSON data
-app.post('/data', (req, res) => {
-    const data = req.body;
-    console.log(data);
-    res.send('Data received!');
+app.get('/data', (req, res) => {
+  const data = { message: 'Hello from the server!' };
+  res.json(data);
 });
 
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+  console.log(`Server listening on port ${port}`);
 });
