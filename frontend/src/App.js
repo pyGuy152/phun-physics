@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   const [data, setData] = useState(null);
@@ -14,13 +15,13 @@ function App() {
   }, []);
 
   return (
-    <div>
-      {data ? (
-        <p>Data from the server: {data.message}</p>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
